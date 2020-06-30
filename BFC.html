@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+
+    .margin-non-overlapping {
+      width: 200px;
+      line-height: 100px;
+      color: #fff;
+      text-align: center;
+      margin: 30px auto;
+      background-color: red;
+    }
+
+    .bfc {
+      overflow: hidden;
+      /* float: left; */
+      /* float: right; */
+      /* display: inline-block; */
+      /* display: flex; */
+      /* position: absolute; */
+      /* position: fixed; */
+    }
+    .bfc > .margin-non-overlapping {
+      background-color: green;
+    }
+
+    .non-overlapping-with-float-box {
+      text-align: center;
+      color: #fff;
+      background-color: blue;
+      font-size: 12px;
+    }
+    .non-overlapping-with-float-box.left {
+      float: left;
+      width: 100px;
+      height: 150px;
+      line-height: 150px;
+    }
+    .non-overlapping-with-float-box.right {
+      height: 200px;
+      line-height: 200px;
+      background-color: gray;
+    }
+
+    .clearfix {
+      background-color: black;
+      color: #fff;
+    }
+    .clearfix > .child {
+      float: left;
+      color: #fff;
+      width: 200px;
+      text-align: center;
+      height: 200px;
+      line-height: 200px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <p class="margin-non-overlapping">margin不重叠</p>
+  <div class="bfc">
+    <p class="margin-non-overlapping">margin不重叠</p>
+  </div>
+
+  <div class="non-overlapping-with-float-box left">float left</div>
+  <div class="non-overlapping-with-float-box right bfc">BFC块不与 float box 重叠(两栏自适应)</div>
+
+  <div class="clearfix bfc">
+    <div class="child">position absolute</div>
+    清除浮动
+  </div>
+</body>
+</html>
